@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    
+  telegraf:
+    image: telegraf
+    restart: always
+  
+  influx:
+    image: influxdb
+    restart: always
+    ports:
+      - 8086:8086
+    environment:
+      - INFLUXDB_USER=telegraf
+      - INFLUXDB_USER_PASSWORD=iijineeZ9iet
+      - INFLUXDB_DB=telegraf
